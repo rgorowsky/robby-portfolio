@@ -22,6 +22,21 @@
         <span id="period">AM</span>
       </div>
     </div>
+
+    <div class="datetime">
+      <div class="date">
+        <span id="dayname">Day</span>
+        <span id="month">Month</span>
+        <span id="daynum">00</span>
+        <span id="year">Year</span>
+      </div>
+      <div class="time">
+        <span id="hour">00</span>
+        <span id="minutes">00</span>
+        <span id="seconds">00</span>
+        <span id="period">AM</span>
+      </div>
+    </div>
     <!--digital clock end-->
 
     <script type="text/Javascript">
@@ -75,7 +90,7 @@
         var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         var ids = ["dayname", "month", "daynum", "year", "hour", "minutes", "seconds", "period"];
-        var values = [dname, mo, dnum.pad(2), yr, hou.pad(2), min.pad(2), sec.pad(2), pe];
+        var values = [dname, mo, dnum.pad(3), yr, hou.pad(2), min.pad(2), sec.pad(2), pe];
         for(var i = 0; i < ids.length; i++)
         document.getElementById(ids[i]).firstChild.nodeValue = values[i];
 
