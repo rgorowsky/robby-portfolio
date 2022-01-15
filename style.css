@@ -20,6 +20,15 @@ body{
   border: 3px solid #14573D;
 }
 
+.utc_datetime{
+  color: #fff;
+  background: #66D4A8;
+  font-family: "SegoeUI", sans-serif;
+  width: 340px;
+  padding: 15px 10px;
+  border: 3px solid #14573D;
+}
+
 .datetime:hover{
   background: #4DE579;
   box-shadow: 0 0 30px #51F981;

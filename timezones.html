@@ -23,18 +23,18 @@
       </div>
     </div>
 
-    <div class="datetime">
+    <div class="utc_datetime">
       <div class="date">
-        <span id="dayname">Day</span>
-        <span id="month">Month</span>
-        <span id="daynum">00</span>
-        <span id="year">Year</span>
+        <span id="utc_dayname">Day</span>
+        <span id="utc_month">Month</span>
+        <span id="utc_daynum">00</span>
+        <span id="utc_year">Year</span>
       </div>
       <div class="time">
-        <span id="hour">00</span>
-        <span id="minutes">00</span>
-        <span id="seconds">00</span>
-        <span id="period">AM</span>
+        <span id="utc_hour">00</span>
+        <span id="utc_minutes">00</span>
+        <span id="utc_seconds">00</span>
+        <span id="utc_period">AM</span>
       </div>
     </div>
     <!--digital clock end-->
@@ -90,7 +90,63 @@
         var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         var ids = ["dayname", "month", "daynum", "year", "hour", "minutes", "seconds", "period"];
-        var values = [dname, mo, dnum.pad(2), yr, hou.pad(3), min.pad(2), sec.pad(2), pe];
+        var values = [dname, mo, dnum.pad(2), yr, hou.pad(2), min.pad(2), sec.pad(2), pe];
+        for(var i = 0; i < ids.length; i++)
+        document.getElementById(ids[i]).firstChild.nodeValue = values[i];
+
+      }
+
+      function utc_clock() {
+        var now = new Date();
+        var dname = now.getDay(),
+            mo = now.getMonth(),
+            dnum = now.getDate(),
+            yr = now.getFullYear(),
+            hou = now.getHours(),
+            min = now.getMinutes(),
+            sec = now.getSeconds(),
+            pe = "AM";
+
+        if(hou == 0){
+          hou = 12;
+        }
+        if(hou > 12){
+          hou = hou - 12;
+          pe = "PM";
+        }
+
+        if(dname == 0){
+          dname = "Sunday"
+        }
+        if(dname == 1){
+          dname = "Monday"
+        }
+        if(dname == 2){
+          dname = "Tuesday"
+        }
+        if(dname == 3){
+          dname = "Wednesday"
+        }
+        if(dname == 4){
+          dname = "Thursday"
+        }
+        if(dname == 5){
+          dname = "Friday"
+        }
+        if(dname == 6){
+          dname = "Saturday"
+        }
+        
+
+        Number.prototype.pad = function(digits){
+          for(var n = this.toString(); n.length < digits; n = 0 + n);
+          return n;
+        }
+
+        var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        var ids = ["utc_dayname", "utc_month", "utc_daynum", "utc_year", "utc_hour", "utc_minutes", "utc_seconds", "utc_period"];
+        var values = [dname, mo, dnum.pad(2), yr, hou.pad(2), min.pad(2), sec.pad(2), pe];
         for(var i = 0; i < ids.length; i++)
         document.getElementById(ids[i]).firstChild.nodeValue = values[i];
 
@@ -98,7 +154,9 @@
 
       function initClock(){
         updateClock();
-        window.setInterval("updateClock()", 1);
+        utc_clock();
+        window.setInterval("updateClock()", 1); 
+        // <!-- I think this is where I get BOTH of the clocks to update -->
       }
     </script>
 
