@@ -1,202 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Digital clock and Date</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body onload="initClock()">
-
-    <!--digital clock start-->
-    <div class="datetime">
-      <div class="date">
-        <span id="dayname">Day</span>
-        <span id="month">Month</span>
-        <span id="daynum">00</span>
-        <span id="year">Year</span>
-      </div>
-      <div class="time">
-        <span id="hour">00</span>
-        <span id="minutes">00</span>
-        <span id="seconds">00</span>
-        <span id="period">AM</span>
-      </div>
-    </div>
-
-    <div class="utc_datetime">
-      <div class="date">
-        <span id="utc_dayname">Day</span>
-        <span id="utc_month">Month</span>
-        <span id="utc_daynum">00</span>
-        <span id="utc_year">Year</span>
-      </div>
-      <div class="time">
-        <span id="utc_hour">00</span>
-        <span id="utc_minutes">00</span>
-        <span id="utc_seconds">00</span>
-        <span id="utc_period">AM</span>
-      </div>
-    </div>
-    <!--digital clock end-->
-
-    <script type="text/Javascript">
-      function updateClock(){
-        var now = new Date();
-        var dname = now.getDay(),
-            mo = now.getMonth(),
-            dnum = now.getDate(),
-            yr = now.getFullYear(),
-            hou = now.getHours(),
-            min = now.getMinutes(),
-            sec = now.getSeconds(),
-            pe = "AM";
-
-        if(hou == 0){
-          hou = 12;
-        }
-        if(hou > 12){
-          hou = hou - 12;
-          pe = "PM";
-        }
-
-        if(dname == 0){
-          dname = "Sunday"
-        }
-        if(dname == 1){
-          dname = "Monday"
-        }
-        if(dname == 2){
-          dname = "Tuesday"
-        }
-        if(dname == 3){
-          dname = "Wednesday"
-        }
-        if(dname == 4){
-          dname = "Thursday"
-        }
-        if(dname == 5){
-          dname = "Friday"
-        }
-        if(dname == 6){
-          dname = "Saturday"
-        }
-        
-
-        Number.prototype.pad = function(digits){
-          for(var n = this.toString(); n.length < digits; n = 0 + n);
-          return n;
-        }
-
-        var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        var ids = ["dayname", "month", "daynum", "year", "hour", "minutes", "seconds", "period"];
-        var values = [dname, mo, dnum.pad(2), yr, hou.pad(2), min.pad(2), sec.pad(2), pe];
-        for(var i = 0; i < ids.length; i++)
-        document.getElementById(ids[i]).firstChild.nodeValue = values[i];
-
-      }
-
-      function utc_clock() {
-        var now = new Date();
-        var dname = now.getDay(),
-            mo = now.getMonth(),
-            dnum = now.getDate(),
-            yr = now.getFullYear(),
-            hou = now.getHours(),
-            min = now.getMinutes(),
-            sec = now.getSeconds(),
-            pe = "AM";
-
-        if(hou == 0){
-          hou = 12;
-        }
-        if(hou > 12){
-          hou = hou - 12;
-          pe = "PM";
-        }
-
-        if(dname == 0){
-          dname = "Sunday"
-        }
-        if(dname == 1){
-          dname = "Monday"
-        }
-        if(dname == 2){
-          dname = "Tuesday"
-        }
-        if(dname == 3){
-          dname = "Wednesday"
-        }
-        if(dname == 4){
-          dname = "Thursday"
-        }
-        if(dname == 5){
-          dname = "Friday"
-        }
-        if(dname == 6){
-          dname = "Saturday"
-        }
-        
-
-        Number.prototype.pad = function(digits){
-          for(var n = this.toString(); n.length < digits; n = 0 + n);
-          return n;
-        }
-
-        var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        var ids = ["utc_dayname", "utc_month", "utc_daynum", "utc_year", "utc_hour", "utc_minutes", "utc_seconds", "utc_period"];
-        var values = [dname, mo, dnum.pad(2), yr, hou.pad(2), min.pad(2), sec.pad(2), pe];
-        for(var i = 0; i < ids.length; i++)
-        document.getElementById(ids[i]).firstChild.nodeValue = values[i];
-
-      }
-
-      function initClock(){
-        updateClock();
-        utc_clock();
-        window.setInterval("updateClock()", 1); 
-        // <!-- I think this is where I get BOTH of the clocks to update -->
-      }
-    </script>
-
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+  <title>Document</title>
+</head>
+<body>
+  <div class="container"> <!-- The containers hold the timeclock elements -->
+    <h1 class="headers">Current Apps</h1>
+    <p id="utc_time" class="draggable" draggable="true">UTC Time</p>
+    <p id="central_time" class="draggable" draggable="true">Robby Time</p>
+  </div>
+  <div class="container">
+    <h1 class="headers">On Deck</h1>
+    <p id="newrelic_time" class="draggable" draggable="true">New Relic</p>
+    <p id="splunk_time" class="draggable" draggable="true">Splunk</p>
+    <p id="colorado_time" class="draggable" draggable="true">Colorado</p>
+    <p id="florida_time" class="draggable" draggable="true">Florida</p>
+  </div>
+</body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <!DOCTYPE html>  Take #1
-  <head>
-    <title></title>
-  </head>
-  <body>
-    <script type="text/Javascript">
-      function calcTime(city,offset){
-        var b=new Date()
-        var utc=b.getTime()+(b.getTimezoneOffset()*60000);
-        var nd=new Date(utc+(3600000));
-        return "the local time of"+city+" is "+nd.toLocaleString();
-
-      }
-
-      //get specific country time
-      console.log(calcTime(' argentina','-3'))
-      console.log(calcTime(' afghanistan','+4'))
-
-    </script>
-  </body>
-</html> -->
