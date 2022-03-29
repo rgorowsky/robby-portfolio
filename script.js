@@ -105,7 +105,7 @@ async function getSplunkTime() {
   let quickTime = new Promise(function(resolve,reject) {
 
     var start_date = new Date();
-    var utc_offset = start_date.setUTCHours(9);
+    var utc_offset = start_date.setUTCHours(11);
     var utc_time = new Date(utc_offset).toLocaleString();
 
     resolve("Splunk App Time " + utc_time);
