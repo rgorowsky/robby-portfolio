@@ -57,7 +57,7 @@ async function getCentralTime() {
   let quickTime = new Promise(function(resolve,reject) {
 
     var start_date = new Date();
-    var utc_offset = start_date.setUTCHours(4);
+    var utc_offset = start_date.setUTCHours(28); // time coming in 24 hours behind - gonna add 24 to offset and see what happens
     var utc_time = new Date(utc_offset).toLocaleString();
 
     resolve("US Central Time " + utc_time);
@@ -89,7 +89,7 @@ async function getNewRelicTime() {
   let quickTime = new Promise(function(resolve,reject) {
 
     var start_date = new Date();
-    var utc_offset = start_date.setUTCHours(4);
+    var utc_offset = start_date.setUTCHours(28); // this has been off 1 day behind, adding 24 hours to fix offset
     var utc_time = new Date(utc_offset).toLocaleString();
 
     resolve("New Relic App Time " + utc_time);
@@ -121,7 +121,7 @@ async function getColoradoTime() {
   let quickTime = new Promise(function(resolve,reject) {
 
     var start_date = new Date();
-    var utc_offset = start_date.setUTCHours(3);
+    var utc_offset = start_date.setUTCHours(27); // time has been behind by 1 day, adding 24 hours to offset
     var utc_time = new Date(utc_offset).toLocaleString();
 
     resolve("Denver Mountain Daylight Time " + utc_time);
@@ -137,7 +137,7 @@ async function getFloridaTime() {
   let quickTime = new Promise(function(resolve,reject) {
 
     var start_date = new Date();
-    var utc_offset = start_date.setUTCHours(5);
+    var utc_offset = start_date.setUTCHours(22); // florida time 12/22 4pm - coming in as 12/21 11 pm - adjust offset from 5 (+17) to 22
     var utc_time = new Date(utc_offset).toLocaleString();
 
     resolve("Florida Eastern Daylight Time " + utc_time);
