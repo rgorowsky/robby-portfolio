@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Pi Resolver</title>
+  <link rel="stylesheet" href="aifilter-styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      AI Pi Resolver
+    </div>
+    <div class="content">
+      <div class="left-panel">
+        <button id="add-pi-term">Add Another Pi Term</button>
+        <div class="input-group" id="left-inputs">
+          <!-- Default Input Fields -->
+          <div class="input-container">
+            <input type="text" class="input-left" value="input text here" data-default="input text here">
+            <span class="remove-input">x</span>
+          </div>
+          <div class="input-container">
+            <input type="text" class="input-left" value="input text here" data-default="input text here">
+            <span class="remove-input">x</span>
+          </div>
+          <div class="input-container">
+            <input type="text" class="input-left" value="input text here" data-default="input text here">
+            <span class="remove-input">x</span>
+          </div>
+        </div>
+      </div>
+      <div class="right-panel" id="right-inputs">
+        <!-- Matching Input Fields -->
+        <input type="text" class="input-right" value="becomes this" data-default="becomes this">
+        <input type="text" class="input-right" value="becomes this" data-default="becomes this">
+        <input type="text" class="input-right" value="becomes this" data-default="becomes this">
+      </div>
+    </div>
+    <div class="footer">
+      <button id="remove-pi-terms" disabled>Remove Pi Terms</button>
+      <textarea id="raw-query" class="large-input" data-default="input raw query here">input raw query here</textarea>
+      <textarea id="resolved-query" class="large-input" readonly></textarea>
+    </div>
+  </div>
+  <script src="script.ts" type="module"></script>
+</body>
+</html>
