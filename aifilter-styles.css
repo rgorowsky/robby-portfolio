@@ -27,11 +27,22 @@ body, html {
     margin-bottom: 20px;
   }
   
-  .left-panel, .right-panel {
+  .left-panel {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-end; /* Align right to leave space */
     width: 25%;
+    position: relative;
+    right: 100px; /* Shift left panel 100px to the left */
+  }
+  
+  .right-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align left to leave space */
+    width: 25%;
+    position: relative;
+    left: 100px; /* Shift right panel 100px to the right */
   }
   
   #add-pi-term {
