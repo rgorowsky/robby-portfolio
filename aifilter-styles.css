@@ -33,7 +33,7 @@ body, html {
     align-items: flex-end; /* Align right to leave space */
     width: 25%;
     position: relative;
-    right: 100px; /* Shift left panel 100px to the left */
+    right: 200px; /* Shift left panel 100px to the left */
   }
   
   .right-panel {
@@ -42,7 +42,7 @@ body, html {
     align-items: flex-start; /* Align left to leave space */
     width: 25%;
     position: relative;
-    left: 100px; /* Shift right panel 100px to the right */
+    left: 200px; /* Shift right panel 100px to the right */
   }
   
   #add-pi-term {
