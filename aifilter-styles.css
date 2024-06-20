@@ -23,8 +23,9 @@ body, html {
   
   .content {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between; /* Distribute space evenly */
     margin-bottom: 20px;
+    position: relative;
   }
   
   .left-panel {
@@ -49,6 +50,14 @@ body, html {
     width: 100px;
     height: 20px;
     margin-bottom: 10px;
+  }
+  
+  #remove-pi-terms {
+    width: 100px;
+    height: 20px;
+    margin-bottom: 10px;
+    position: relative;
+    left: 100px; /* Align to center over right panel */
   }
   
   .input-container {
@@ -81,12 +90,8 @@ body, html {
   
   .footer {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  #remove-pi-terms {
-    margin-bottom: 20px;
+    justify-content: space-between; /* Align elements at the ends */
+    width: 100%; /* Ensure it spans the container width */
   }
   
   .large-input {
@@ -97,3 +102,12 @@ body, html {
     padding: 5px;
   }
   
+  #raw-query {
+    width: calc(25% + 100px); /* Width to match left panel with offset */
+    text-align: left;
+  }
+  
+  #resolved-query {
+    width: calc(25% + 100px); /* Width to match right panel with offset */
+    text-align: left;
+  }
