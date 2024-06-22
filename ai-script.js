@@ -125,3 +125,4 @@ function removeInput(leftInputContainer, rightContainer) {
   const removePiTermsButton = document.getElementById('remove-pi-terms');
   const rawQueryInput = document.getElementById('raw-query');
   toggleRemovePiTermsButton
+}
