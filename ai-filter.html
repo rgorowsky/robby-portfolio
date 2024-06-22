@@ -1,49 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Pi Resolver</title>
-  <link rel="stylesheet" href="aifilter-styles.css">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI PI Resolver</title>
+    <link rel="stylesheet" href="aifilter-styles.css">
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      AI Pi Resolver
+    <div class="container">
+        <h1>AI PI Resolver</h1>
     </div>
-    <div class="content">
-      <div class="left-panel">
+    <div class="button-container">
         <button id="add-pi-term">Add Another Pi Term</button>
-        <div class="input-group" id="left-inputs">
-          <!-- Default Input Fields -->
-          <div class="input-container">
+    </div>
+    <div class="left-panel" id="left-inputs">
+        <div class="input-container">
             <input type="text" class="input-left" value="input text here" data-default="input text here">
             <span class="remove-input">x</span>
-          </div>
-          <div class="input-container">
-            <input type="text" class="input-left" value="input text here" data-default="input text here">
-            <span class="remove-input">x</span>
-          </div>
-          <div class="input-container">
-            <input type="text" class="input-left" value="input text here" data-default="input text here">
-            <span class="remove-input">x</span>
-          </div>
         </div>
-      </div>
-      <div class="right-panel" id="right-inputs">
+        <div class="input-container">
+            <input type="text" class="input-left" value="input text here" data-default="input text here">
+            <span class="remove-input">x</span>
+        </div>
+        <div class="input-container">
+            <input type="text" class="input-left" value="input text here" data-default="input text here">
+            <span class="remove-input">x</span>
+        </div>
+    </div>
+    <div class="right-panel" id="right-inputs">
+        <input type="text" class="input-right" value="becomes this" data-default="becomes this">
+        <input type="text" class="input-right" value="becomes this" data-default="becomes this">
+        <input type="text" class="input-right" value="becomes this" data-default="becomes this">
+    </div>
+    <div class="button-container">
         <button id="remove-pi-terms" disabled>Remove Pi Terms</button>
-        <!-- Matching Input Fields -->
-        <input type="text" class="input-right" value="becomes this" data-default="becomes this">
-        <input type="text" class="input-right" value="becomes this" data-default="becomes this">
-        <input type="text" class="input-right" value="becomes this" data-default="becomes this">
-      </div>
     </div>
     <div class="footer">
-      <textarea id="raw-query" class="large-input" data-default="input raw query here">input raw query here</textarea>
-      <textarea id="resolved-query" class="large-input" readonly></textarea>
+        <textarea id="raw-query" data-default="input raw query here">input raw query here</textarea>
+        <textarea id="resolved-query" readonly>resolved query here</textarea>
     </div>
-  </div>
-  <script src="ai-script.js" type="module"></script>
+    <script src="ai-script.js"></script>
 </body>
 </html>

@@ -73,9 +73,7 @@ function setupInputFocus(leftContainer, rightContainer) {
       if (input.dataset.default) {
         input.dataset.default = '';
       }
-      if (rightContainer.children[index]) {
-        rightContainer.children[index].value = ''; // Remove default value when typing
-      }
+      rightContainer.children[index].removeAttribute('value');
     });
   });
 
@@ -109,7 +107,7 @@ function setupInputFocusForTextArea(textArea) {
 
 // Function to set up remove button actions
 function setupRemoveButtons(leftContainer) {
-  Array.from(leftContainer.querySelectorAll('.remove-input')).forEach((button) => {
+  Array.from(leftContainer.querySelectorAll('.remove-input')).forEach((button, index) => {
     button.addEventListener('click', () => {
       removeInput(button.parentElement, leftContainer);
     });
@@ -120,41 +118,11 @@ function setupRemoveButtons(leftContainer) {
 function removeInput(leftInputContainer, rightContainer) {
   const index = Array.from(leftInputContainer.parentElement.children).indexOf(leftInputContainer);
   leftInputContainer.remove(); // Remove the left input container
-  if (index !== -1 && rightContainer.children[index]) {
+  if (index !== -1) {
     rightContainer.children[index].remove(); // Remove the corresponding right input
   }
   // Update the "Remove Pi Terms" button state
   const removePiTermsButton = document.getElementById('remove-pi-terms');
   const rawQueryInput = document.getElementById('raw-query');
-  toggleRemovePiTermsButton(removePiTermsButton, leftContainer.parentElement, rawQueryInput);
+  toggleRemovePiTermsButton
 }
-
-// Function to toggle the "Remove Pi Terms" button state
-function toggleRemovePiTermsButton(button, leftContainer, rawQueryInput) {
-  const hasTextInputs = leftContainer.querySelectorAll('.input-left').length > 0;
-  const rawQueryHasText = rawQueryInput.value.length > 2 && rawQueryInput.value !== rawQueryInput.dataset.default;
-  button.disabled = !(hasTextInputs && rawQueryHasText);
-}
-
-// Function to handle "Remove Pi Terms" action
-function removePiTerms(leftContainer, rightContainer, rawQueryInput, resolvedQueryInput) {
-  if (rawQueryInput.value.length <= 2) return;
-
-  const leftInputs = leftContainer.querySelectorAll('.input-left');
-  const rightInputs = rightContainer.querySelectorAll('.input-right');
-
-  let query = rawQueryInput.value;
-
-  leftInputs.forEach((leftInput, index) => {
-    const searchTerm = leftInput.value;
-    const replaceTerm = rightInputs[index].value;
-    if (searchTerm && replaceTerm) {
-      query = query.replace(new RegExp(searchTerm, 'g'), replaceTerm);
-    }
-  });
-
-  resolvedQueryInput.value = query;
-}
-
-// Initialize the application
-window.addEventListener('DOMContentLoaded', init);
