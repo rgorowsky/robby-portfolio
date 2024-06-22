@@ -8,6 +8,7 @@ body, html {
   align-items: center;
   height: 100vh;
   background-color: #f0f0f0;
+  width: calc(100% - 20px); /* added to make body wider */
 }
 
 .container {
@@ -95,7 +96,7 @@ body, html {
 
 .large-input {
   width: calc(50% - 20px); /* Adjust to fit with a 10px gap */
-  min-height: 100px;
+  min-height: 200px;
   resize: vertical;
   padding: 5px;
 }
