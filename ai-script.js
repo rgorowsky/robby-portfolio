@@ -1,13 +1,13 @@
-// script.ts
+// script.js
 
 // Function to initialize the input fields and button actions
 function init() {
-  const addPiTermButton = document.getElementById('add-pi-term') as HTMLButtonElement;
-  const removePiTermsButton = document.getElementById('remove-pi-terms') as HTMLButtonElement;
-  const leftInputsContainer = document.getElementById('left-inputs')!;
-  const rightInputsContainer = document.getElementById('right-inputs')!;
-  const rawQueryInput = document.getElementById('raw-query') as HTMLTextAreaElement;
-  const resolvedQueryInput = document.getElementById('resolved-query') as HTMLTextAreaElement;
+  const addPiTermButton = document.getElementById('add-pi-term');
+  const removePiTermsButton = document.getElementById('remove-pi-terms');
+  const leftInputsContainer = document.getElementById('left-inputs');
+  const rightInputsContainer = document.getElementById('right-inputs');
+  const rawQueryInput = document.getElementById('raw-query');
+  const resolvedQueryInput = document.getElementById('resolved-query');
 
   // Attach click event to the "Add Another Pi Term" button
   addPiTermButton.addEventListener('click', () => addPiTerm(leftInputsContainer, rightInputsContainer));
@@ -25,7 +25,7 @@ function init() {
 }
 
 // Function to add a new pair of input fields
-function addPiTerm(leftContainer: HTMLElement, rightContainer: HTMLElement) {
+function addPiTerm(leftContainer, rightContainer) {
   // Create new input for the left panel
   const newLeftInputContainer = document.createElement('div');
   newLeftInputContainer.className = 'input-container';
@@ -62,37 +62,39 @@ function addPiTerm(leftContainer: HTMLElement, rightContainer: HTMLElement) {
 }
 
 // Function to set up focus behavior for input fields
-function setupInputFocus(leftContainer: HTMLElement, rightContainer: HTMLElement) {
-  leftContainer.querySelectorAll('.input-left').forEach((input, index) => {
+function setupInputFocus(leftContainer, rightContainer) {
+  Array.from(leftContainer.querySelectorAll('.input-left')).forEach((input, index) => {
     input.addEventListener('focus', () => {
-      if ((input as HTMLInputElement).value === (input as HTMLInputElement).dataset.default) {
-        (input as HTMLInputElement).select();
+      if (input.value === input.dataset.default) {
+        input.select();
       }
     });
     input.addEventListener('input', () => {
-      if ((input as HTMLInputElement).dataset.default) {
-        (input as HTMLInputElement).dataset.default = '';
+      if (input.dataset.default) {
+        input.dataset.default = '';
       }
-      rightContainer.children[index].removeAttribute('value');
+      if (rightContainer.children[index]) {
+        rightContainer.children[index].value = ''; // Remove default value when typing
+      }
     });
   });
 
-  rightContainer.querySelectorAll('.input-right').forEach((input) => {
+  Array.from(rightContainer.querySelectorAll('.input-right')).forEach((input) => {
     input.addEventListener('focus', () => {
-      if ((input as HTMLInputElement).value === (input as HTMLInputElement).dataset.default) {
-        (input as HTMLInputElement).select();
+      if (input.value === input.dataset.default) {
+        input.select();
       }
     });
     input.addEventListener('input', () => {
-      if ((input as HTMLInputElement).dataset.default) {
-        (input as HTMLInputElement).dataset.default = '';
+      if (input.dataset.default) {
+        input.dataset.default = '';
       }
     });
   });
 }
 
 // Function to set up focus behavior for the large textarea
-function setupInputFocusForTextArea(textArea: HTMLTextAreaElement) {
+function setupInputFocusForTextArea(textArea) {
   textArea.addEventListener('focus', () => {
     if (textArea.value === textArea.dataset.default) {
       textArea.select();
@@ -106,36 +108,36 @@ function setupInputFocusForTextArea(textArea: HTMLTextAreaElement) {
 }
 
 // Function to set up remove button actions
-function setupRemoveButtons(leftContainer: HTMLElement) {
-  leftContainer.querySelectorAll('.remove-input').forEach((button, index) => {
+function setupRemoveButtons(leftContainer) {
+  Array.from(leftContainer.querySelectorAll('.remove-input')).forEach((button) => {
     button.addEventListener('click', () => {
-      removeInput(button.parentElement as HTMLElement, leftContainer);
+      removeInput(button.parentElement, leftContainer);
     });
   });
 }
 
 // Function to remove an input field
-function removeInput(leftInputContainer: HTMLElement, rightContainer: HTMLElement) {
-  const index = Array.from(leftInputContainer.parentElement!.children).indexOf(leftInputContainer);
+function removeInput(leftInputContainer, rightContainer) {
+  const index = Array.from(leftInputContainer.parentElement.children).indexOf(leftInputContainer);
   leftInputContainer.remove(); // Remove the left input container
-  if (index !== -1) {
+  if (index !== -1 && rightContainer.children[index]) {
     rightContainer.children[index].remove(); // Remove the corresponding right input
   }
   // Update the "Remove Pi Terms" button state
-  const removePiTermsButton = document.getElementById('remove-pi-terms') as HTMLButtonElement;
-  const rawQueryInput = document.getElementById('raw-query') as HTMLTextAreaElement;
-  toggleRemovePiTermsButton(removePiTermsButton, leftContainer, rawQueryInput);
+  const removePiTermsButton = document.getElementById('remove-pi-terms');
+  const rawQueryInput = document.getElementById('raw-query');
+  toggleRemovePiTermsButton(removePiTermsButton, leftContainer.parentElement, rawQueryInput);
 }
 
 // Function to toggle the "Remove Pi Terms" button state
-function toggleRemovePiTermsButton(button: HTMLButtonElement, leftContainer: HTMLElement, rawQueryInput: HTMLTextAreaElement) {
+function toggleRemovePiTermsButton(button, leftContainer, rawQueryInput) {
   const hasTextInputs = leftContainer.querySelectorAll('.input-left').length > 0;
   const rawQueryHasText = rawQueryInput.value.length > 2 && rawQueryInput.value !== rawQueryInput.dataset.default;
   button.disabled = !(hasTextInputs && rawQueryHasText);
 }
 
 // Function to handle "Remove Pi Terms" action
-function removePiTerms(leftContainer: HTMLElement, rightContainer: HTMLElement, rawQueryInput: HTMLTextAreaElement, resolvedQueryInput: HTMLTextAreaElement) {
+function removePiTerms(leftContainer, rightContainer, rawQueryInput, resolvedQueryInput) {
   if (rawQueryInput.value.length <= 2) return;
 
   const leftInputs = leftContainer.querySelectorAll('.input-left');
@@ -144,8 +146,8 @@ function removePiTerms(leftContainer: HTMLElement, rightContainer: HTMLElement, 
   let query = rawQueryInput.value;
 
   leftInputs.forEach((leftInput, index) => {
-    const searchTerm = (leftInput as HTMLInputElement).value;
-    const replaceTerm = (rightInputs[index] as HTMLInputElement).value;
+    const searchTerm = leftInput.value;
+    const replaceTerm = rightInputs[index].value;
     if (searchTerm && replaceTerm) {
       query = query.replace(new RegExp(searchTerm, 'g'), replaceTerm);
     }
