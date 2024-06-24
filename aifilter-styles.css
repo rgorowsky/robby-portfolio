@@ -6,11 +6,11 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   background-color: #f0f0f0;
+  flex-direction: column; /* Ensure body content stacks vertically */
+  height: 100vh;
 }
 
-/* Container for all elements */
 .main-container {
   display: flex;
   flex-direction: column;
@@ -27,8 +27,8 @@ body, html {
   margin-bottom: 20px;
 }
 
-/* Content container to hold both left and right panels */
-.content-container {
+/* Button container */
+.button-container {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -36,52 +36,49 @@ body, html {
   margin-bottom: 20px;
 }
 
-/* Button containers */
-.button-container {
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: center;
-}
-
 #add-pi-term, #remove-pi-terms {
-  width: 150px;
-  height: 30px;
+  width: 200px;
+  height: 40px;
 }
 
-/* Panels styling */
-.left-panel, .right-panel {
+/* Input container styling */
+.input-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 1;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 20px;
 }
 
-.input-container {
-  position: relative;
+.input-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
   margin-bottom: 10px;
 }
 
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
 .input-left, .input-right {
-  width: 150px;
-  height: 30px;
+  width: 200px;
+  height: 40px;
   padding: 5px;
-  font-size: 14px;
+  font-size: 16px;
   box-sizing: border-box;
-}
-
-.input-left {
-  text-align: left;
-}
-
-.input-right {
   text-align: left;
 }
 
 /* Remove button */
 .remove-input {
   position: absolute;
-  top: 5px;
+  top: 50%;
   right: -20px;
+  transform: translateY(-50%);
   color: red;
   cursor: pointer;
   font-weight: bold;
@@ -93,13 +90,14 @@ body, html {
   justify-content: space-between;
   width: 100%;
   max-width: 800px;
+  margin-top: 20px;
 }
 
 textarea {
-  width: 45%;
+  width: 48%;
   height: 100px;
   padding: 10px;
-  font-size: 14px;
+  font-size: 16px;
   box-sizing: border-box;
   resize: vertical;
 }
