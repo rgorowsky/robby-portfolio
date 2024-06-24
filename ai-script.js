@@ -36,8 +36,8 @@ function addPiTerm(container) {
     const newLeftInput = document.createElement('input');
     newLeftInput.type = 'text';
     newLeftInput.className = 'input-left';
-    newLeftInput.value = 'input text here';
-    newLeftInput.dataset.default = 'input text here';
+    newLeftInput.value = 'What needs to disappear';
+    newLeftInput.dataset.default = 'What needs to disappear';
     newLeftInputGroup.appendChild(newLeftInput);
 
     // Create the remove button 'x' for the left panel
@@ -54,8 +54,8 @@ function addPiTerm(container) {
     const newRightInput = document.createElement('input');
     newRightInput.type = 'text';
     newRightInput.className = 'input-right';
-    newRightInput.value = 'becomes this';
-    newRightInput.dataset.default = 'becomes this';
+    newRightInput.value = 'How to obfuscate';
+    newRightInput.dataset.default = 'How to obfuscate';
 
     // Append the new input to the right side of the row
     newInputRow.appendChild(newRightInput);
