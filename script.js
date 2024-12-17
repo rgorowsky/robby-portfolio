@@ -43,42 +43,28 @@ function getDragAfterElement(container, y) {
   }, { offset: Number.NEGATIVE_INFINITY }).element // sets this so every other number is lower than that
 }
 
-// var x = new Date().toLocaleDateString(new Intl.DateTimeFormat("en", { dateStyle: "full", timeStyle: "full" }));
-// const date = new Date();            // THIS IS PART OF ATTEMPT 1 ; UNCOMMENT IF NEED TO REVERT
-// console.log(new Intl.DateTimeFormat('en-GB', { dateStyle: 'full', timeStyle: 'long' }).format(date));
-// console.log(x)
-
-// var today = new Date();
-// var date = today.getDay()
-
 
 async function getCentralTime() {
+  let quickTime = new Promise((resolve) => {
+    const options = { timeZone: 'America/Chicago', hour12: true, hour: '2-digit', minute: '2-digit', second: '2-digit' };
+    const centralTime = new Date().toLocaleString('en-US', options);
+    resolve("US Central Time " + centralTime);
+  });
 
-  let quickTime = new Promise(function(resolve,reject) {
-
-    var start_date = new Date();
-    var utc_offset = start_date.setUTCHours(28); // time coming in 24 hours behind - gonna add 24 to offset and see what happens
-    var utc_time = new Date(utc_offset).toLocaleString();
-
-    resolve("US Central Time " + utc_time);
-  })
-  document.getElementById("central_time").innerHTML = await quickTime
+  document.getElementById("central_time").innerHTML = await quickTime;
 }
 
 getCentralTime();
 setInterval(getCentralTime, 1000);
 
 async function getUtcTime() {
+  let quickTime = new Promise((resolve) => {
+    const options = { timeZone: 'utc', hour12: true, hour: '2-digit', minute: '2-digit', second: '2-digit' };
+    const centralTime = new Date().toLocaleString('en-US', options);
+    resolve("UTC Standard Time " + quickTime);
+  });
 
-  let quickTime = new Promise(function(resolve,reject) {
-
-    var start_date = new Date();
-    var utc_offset = start_date.setUTCHours(9);
-    var utc_time = new Date(utc_offset).toLocaleString();
-
-    resolve("UTC Standard Time " + utc_time);
-  })
-  document.getElementById("utc_time").innerHTML = await quickTime
+  document.getElementById("utc_time").innerHTML = await quickTime;
 }
 
 getUtcTime();
