@@ -60,8 +60,8 @@ setInterval(getCentralTime, 1000);
 async function getUtcTime() {
   let quickTime = new Promise((resolve) => {
     const options = { timeZone: 'UTC', hour12: true, hour: '2-digit', minute: '2-digit', second: '2-digit' };
-    const centralTime = new Date().toLocaleString('en-US', options);
-    resolve("UTC Standard Time " + quickTime);
+    const utcTime = new Date().toLocaleString('en-US', options);
+    resolve("UTC Standard Time " + utcTime);
   });
 
   document.getElementById("utc_time").innerHTML = await quickTime;
@@ -70,15 +70,16 @@ async function getUtcTime() {
 getUtcTime();
 setInterval(getUtcTime, 1000);
 
-  async function getNewRelicTime() {
-    let quickTime = new Promise((resolve) => {
-      const options = { timeZone: 'UTC', hour12: true, hour: '2-digit', minute: '2-digit', second: '2-digit' };
-      const centralTime = new Date().toLocaleString('en-US', options);
-      resolve("New Relic App Time " + newRelicTime);
-    });
 
-    document.getElementById("newrelic_time").innerHTML = await quickTime;
-  }
+async function getNewRelicTime() {
+  let quickTime = new Promise((resolve) => {
+    const options = { timeZone: 'UTC', hour12: true, hour: '2-digit', minute: '2-digit', second: '2-digit' };
+    const centralTime = new Date().toLocaleString('en-US', options);
+    resolve("New Relic App Time " + newRelicTime);
+  });
+
+  document.getElementById("newrelic_time").innerHTML = await quickTime;
+}
 
 getNewRelicTime();
 setInterval(getNewRelicTime, 1000);
