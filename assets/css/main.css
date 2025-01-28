@@ -1186,6 +1186,31 @@ input, select, textarea {
 			ul.icons li .icon:before {
 				font-size: 1.25em;
 			}
+	/* Custom LinkedIn icon styles */
+	ul.contact-icons li a {
+		display: inline-block; /* Ensure it appears inline */
+		text-decoration: none; /* Remove underline */
+		color: inherit; /* Inherit color from parent */
+		border: none; /* Override unwanted borders */
+		position: relative; /* For proper placement */
+		padding: 0; /* Remove default padding */
+		margin: 0; /* Remove default margin */
+	}	
+	
+	/* Optional: Add hover effect to the LinkedIn logo */
+	ul.icons li .custom-linkedin:hover img {
+		filter: brightness(0.8); /* Darkens the icon slightly */
+		transform: scale(1.1); /* Subtle zoom effect */
+		transition: all 0.3s ease; /* Smooth hover transition */
+	}
+
+	ul.contact-icons li img {
+		width: 40px;
+		height: 40px;
+		margin-right: 0.5rem; /* Space between icon and text */
+		vertical-align: middle; /* Align with text */
+	}
+ 
 
 /* Grid Icons */
 
