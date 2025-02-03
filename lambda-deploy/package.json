@@ -13,5 +13,6 @@
     "aws-sdk": "^2.1692.0"
   },
   "devDependencies": {},
-  "description": ""
+  "description": "",
+  "type": "module"
 }
