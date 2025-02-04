@@ -1,7 +1,7 @@
 const AWS = require("aws-sdk");
 const ses = new AWS.SES({ region: "us-east-2" });
 
-exports.handler = async (event: any) => {
+exports.handler = async (event) => {
   try {
     const { name, email, message } = JSON.parse(event.body);
 
