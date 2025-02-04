@@ -1,7 +1,7 @@
-const AWS = require("aws-sdk");
-const ses = new AWS.SES({ region: "us-east-2" });
+import { SES } from "aws-sdk";
+const ses = new SES({ region: "us-east-2" });
 
-exports.handler = async (event) => {
+export async function handler(event) {
   try {
     const { name, email, message } = JSON.parse(event.body);
 
@@ -31,4 +31,4 @@ exports.handler = async (event) => {
       body: JSON.stringify({ error: "Failed to send email" })
     };
   }
-};
+}
