@@ -1,6 +1,6 @@
 
 
-## HTML,CSS
+**HTML,CSS**
 
 **Homepage:** 
 Boilerplate via Ethereal by HTML5 UP, html5up.net | @ajlkn.  
@@ -26,3 +26,19 @@ Randomly generated with ChaptGPT and google.  It's not particularly pleasing to 
 **Amazon Lambda Functions**
 **Amazon SES for contact form automated Emailing
 - Homepage contact form  POST served by lambda function, email triggered via SES
+
+For good ole sake since I'm not using my companies OP commands; order of operations
+- git checkout -b <branchName>
+- _Add code_
+- Git add .
+- Git status *updated file(s) should be green*
+- Git commit -m '<add message here>'
+- Git checkout main
+- Git merge <branchName>
+- Git status _on banch main your branch is ahead of origin/main by 1 commit_
+- Git push origin main
+- [if update to lambda-deploy files] navigate within folders 
+- cd /root/folder/lambda-deploy
+- zip -r lambda-deploy.zip ./*
+- navigate to lambda-deploy zip file via Finder
+- update to lambda functio
